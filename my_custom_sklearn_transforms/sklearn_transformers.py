@@ -53,7 +53,7 @@ class FillNANSpecial(BaseEstimator, TransformerMixin):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
         for field in ['DE','EM','MF','GO']:
-            median = df_data_1['NOTA_'+field].median()
+            median = data['NOTA_'+field].median()
             data['NOTA_'+field] = data.apply(self.fillnan, args=(field, median), axis=1)
         return data
     
